@@ -410,7 +410,7 @@ func (r *Reconciler) UpdateAutoscaler(vpa *autoscalingv1.VerticalPodAutoscalerCo
 
 	existingSpec := &existingDeployment.Spec.Template.Spec
 	expectedSpec := params.PodSpecMethod(r, vpa, params)
-	expectedReplicas := int32(1)
+	expectedReplicas := int32(0)
 	// disable the controller if it shouldn't be enabled
 	if !params.EnabledMethod(r, vpa) {
 		expectedReplicas = 0
@@ -615,7 +615,7 @@ func (r *Reconciler) AutoscalerDeployment(vpa *autoscalingv1.VerticalPodAutoscal
 	}
 
 	podSpec := params.PodSpecMethod(r, vpa, params)
-	replicas := int32(1)
+	replicas := int32(0)
 	// disable the controller if it shouldn't be enabled
 	if !params.EnabledMethod(r, vpa) {
 		replicas = 0
